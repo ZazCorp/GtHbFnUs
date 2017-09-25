@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+.error-text{
+    color: red;
+}
+
+.info-text{
+    color: darkcyan;
+}
+
+.main{
+    padding: 10px;
+    width: 600px;
+   
+}
+
+.main > div{
+    margin-bottom: 10px;
+}
+
+.avatar{
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.user{
+    display: flex;
+    margin: 15px;
+}
+
+.user-info{
+    min-height: 48px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.login{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+div{
+    display: block;
+}
+
+.scroll{
+    height: 500px;
+    overflow-y: auto;
+}

@@ -1,0 +1,38 @@
+<div class="main">
+<div class="row">
+    <div class="col-lg-8">
+        <input type="text" class="form-control" [(ngModel)]="str" placeholder="имя пользователя, например: zazcorp"/>
+        <span *ngIf="result.isError" class="animate-if error-text">
+            {{result.error}}
+          </span>
+    </div>
+    <div>
+        <button class="btn " (click)="onClick(str,1)">Найти</button>
+    </div>
+</div>
+<div class="row scroll" >
+        <div class="col-lg-8">
+   <span class="animate-if info-text" *ngIf="result.total_count > 0">Всего найдено: {{result.total_count}}</span>
+
+<div class="user" *ngFor="let user of result.users">
+        <a href="{{user.html_url}}" target="_blank" class="avatar-href">
+            <img src="{{user.avatar_url}}" class="avatar">
+    </a>
+    
+    <div class="user-info">
+            <span class="login">{{user.login}}</span> <br/>
+        <a href="{{user.html_url}}" target="_blank"><em>Ссылка на профиль {{user.login}}</em></a>
+        
+      </div>
+     
+</div>
+<ul class="pagination" *ngIf='result.paging != null'>
+        <li *ngIf="result.paging?.first != null"><a href="{{result.paging.first.url}}">Первая</a></li>
+        <li *ngIf="result.paging?.prev != null"><a href="{{result.paging.prev.url}}">Предыдущая</a></li>
+        <li *ngIf="result.paging?.next != null"><a href="{{result.paging.next.url}}">Следующая</a></li>
+        <li *ngIf="result.paging?.last != null"><a href="{{result.paging.last.url}}">Последняя</a></li>
+      </ul>
+</div>
+
+</div>
+</div>
