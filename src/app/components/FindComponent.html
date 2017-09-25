@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row scroll" >
-        <div class="col-lg-8">
+        <div class="">
    <span class="animate-if info-text" *ngIf="result.total_count > 0">Всего найдено: {{result.total_count}}</span>
 
 <div class="user" *ngFor="let user of result.users">
@@ -27,12 +27,11 @@
      
 </div>
 <ul class="pagination" *ngIf='result.paging != null'>
-        <li *ngIf="result.paging?.first != null"><a href="{{result.paging.first.url}}">Первая</a></li>
-        <li *ngIf="result.paging?.prev != null"><a href="{{result.paging.prev.url}}">Предыдущая</a></li>
-        <li *ngIf="result.paging?.next != null"><a href="{{result.paging.next.url}}">Следующая</a></li>
-        <li *ngIf="result.paging?.last != null"><a href="{{result.paging.last.url}}">Последняя</a></li>
+        <li *ngIf="result.paging?.first != null"><a href="#" (click)="clickHref(result.paging.first.url)">Первая</a></li>
+        <li *ngIf="result.paging?.prev != null"><a href="#" (click)="clickHref(result.paging.prev.url)">Предыдущая</a></li>
+        <li *ngIf="result.paging?.next != null"><a href="#" (click)="clickHref(result.paging.next.url)">Следующая</a></li>
+        <li *ngIf="result.paging?.last != null"><a href="#" (click)="clickHref(result.paging.last.url)">Последняя</a></li>
       </ul>
 </div>
-
 </div>
 </div>

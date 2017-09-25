@@ -13,28 +13,39 @@ export class FindService {
   constructor(private http: Http) {}
   result = new FindModel();
   public find(str: string, page: number) {
-    this.result = new FindModel();
+
     if (str == null || str === '') {
       this.result.error = 'Пустая строка поиска.';
     } else {
-      try {
+
         const url = `${this.gitUrl + str}&page:${page}`;
-        this.http.get(url).subscribe((resp) => {
-          this.extractData(resp);
-        if (this.result.users.length < 1) {
-          this.result.error = 'Ничего не найдено';
-        }
-      });
+        this.doGet(url);
 
       // alert(r.totalcount);
-      }catch (err) {
-        this.result.error = err.message;
-      }
+
     }
 
     return this.result;
   }
 
+  private doGet(url: string) {
+    this.result = new FindModel();
+    try {
+      this.http.get(url).subscribe((resp) => {
+        this.extractData(resp);
+      if (this.result.users.length < 1) {
+        this.result.error = 'Ничего не найдено';
+      }
+    });
+    }catch (err) {
+      this.result.error = err.message;
+    }
+  }
+
+  public clickHref(url) {
+    this.doGet(url);
+    return this.result;
+  }
   private extractData(res: Response) {
 
     const body = res.json();

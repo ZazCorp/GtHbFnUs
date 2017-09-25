@@ -16,4 +16,8 @@ export class FindComponent  {
   onClick(str, page) {
    this.result =  this.fSrv.find(str, page);
  }
+
+ clickHref(url) {
+   this.result = this.fSrv.clickHref(url);
+ }
 }
